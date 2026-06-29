@@ -22,3 +22,18 @@ flowchart TD
     D1 --> |No| Output
     Output -->End([End])
 ```
+
+```mermaid
+flowchart TD
+    Start([Start]) --> Input[/pos = A, dir = forward/]
+    Input --> D1{ระยะถึง player < 100?}
+    D1 -->|Yes| Chase[/chase Player/]
+    Chase --> End([End])
+    D1 -->|No| Move[/เลื่อน enemy to dir/]
+    Move --> D2{ถึงจุด B?}
+    D2 -->|Yes| DirA[/dir = กลับไป A/]
+    DirA --> D1
+    D2 -->|No| D3{ถึงจุด A?}
+    D3 -->|Yes| DirB[/dir = ไปหน้า B/]
+    D3 -->|No| D1
+    DirB --> D1
